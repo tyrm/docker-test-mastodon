@@ -10,6 +10,6 @@ RUN chown -R mastodon:mastodon /opt/mastodon/app/javascript/styles /opt/mastodon
 
 USER mastodon
 
-RUN cd ~ && ls -la /opt/mastodon/app/javascript/styles && \
+RUN cd ~ && yarn upgrade &&\
     OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder rails assets:precompile && \
     yarn cache clean
