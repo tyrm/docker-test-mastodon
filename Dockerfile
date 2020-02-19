@@ -1,4 +1,4 @@
-FROM tyrm/mastodon:v3.0.1
+FROM tyrm/mastodon:v3.1.1
 
 ADD styles/  /opt/mastodon/app/javascript/styles/
 COPY themes.yml /opt/mastodon/config/themes.yml
@@ -10,6 +10,6 @@ RUN chown -R mastodon:mastodon /opt/mastodon/app/javascript/styles /opt/mastodon
 
 USER mastodon
 
-RUN cd ~ && yarn upgrade &&\
+RUN cd ~ &&\
     OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder rails assets:precompile && \
     yarn cache clean
